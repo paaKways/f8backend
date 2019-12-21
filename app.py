@@ -37,3 +37,9 @@ def upload_file():
             return redirect(url_for('uploaded_file',
                                     filename=filename))
 
+    return 'Hello world Flask';
+
+is_prod = os.environ.get('dev', 'False')
+
+if __name__ == '__main__':
+    if is_prod == 'True': app.run(port = 8000, debug=True)
