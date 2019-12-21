@@ -64,7 +64,15 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/results')
+def view_keywords(keywords):
+    return '''
+        {% for w in keywords %}
+        {{ w }}
+        {% endfor %}
+        '''
+
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
@@ -87,12 +95,15 @@ def upload_file():
             keywords = read(file)
             results = {'uploaded_file_url': uploaded_file_url, 'keywords': keywords}
             
-            return jsonify(results)
+            return redirect(view_keywords(keywords))
             #return redirect(uploaded_file_url)
 
-    else: return '<form action="/" method="POST" ><input type="file" name="file" /><input type="submit" /></form>';
+
+@app.route('/', method=['GET'])
+def
+return '<form action="/" method="POST" ><input type="file" name="file" /><input type="submit" /></form>';
 
 is_prod = os.environ.get('dev', 'False')
 
 if __name__ == '__main__':
-    if is_prod == 'True': app.run(port = 8000, debug=True)
+    if is_prod == 'False': app.run(port = 8000, debug=True)
