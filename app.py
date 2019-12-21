@@ -99,9 +99,9 @@ def upload_file():
             #return redirect(uploaded_file_url)
 
 
-@app.route('/', method=['GET'])
-def
-return '<form action="/" method="POST" ><input type="file" name="file" /><input type="submit" /></form>';
+@app.route('/', methods=['GET'])
+def index():
+    return '<form action="/" method="POST" ><input type="file" name="file" /><input type="submit" /></form>';
 
 is_prod = os.environ.get('dev', 'False')
 
