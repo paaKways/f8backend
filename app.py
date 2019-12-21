@@ -89,7 +89,7 @@ def upload_file():
             return jsonify(results)
             #return redirect(uploaded_file_url)
 
-    else: return '<form action="/" method="POST" ><input type="file" name="file" /></form>';
+    else: return '<form action="/" method="POST" ><input type="file" name="file" /><input type="submit" /></form>';
 
 is_prod = os.environ.get('dev', 'False')
 
